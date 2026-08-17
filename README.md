@@ -1,80 +1,179 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+# Job Portal
 
-const app = express();
-app.use(express.json());
-app.use(cors());
+A full-stack job portal designed to connect students and job seekers with employers through a simple and structured recruitment platform.
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("Database Connected"))
-  .catch(err => console.log("DB Connection Error:", err));
+## Overview
 
-// User Schema
-const UserSchema = new mongoose.Schema({
-  name: String,
-  email: { type: String, unique: true },
-  password: String,
-  role: { type: String, enum: ["student", "employer"] },
-  skills: [String],
-  company: String,
-});
+The Job Portal provides separate user roles for **students/job seekers** and **employers**. Users can create accounts, authenticate securely, and interact with job listings.
 
-const User = mongoose.model("User", UserSchema);
+The backend is built using **Node.js, Express.js, MongoDB, and Mongoose**, with password hashing and JWT-based authentication.
 
-// Job Schema
-const JobSchema = new mongoose.Schema({
-  title: String,
-  company: String,
-  location: String,
-  description: String,
-  skillsRequired: [String],
-  postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-});
+## Features
 
-const Job = mongoose.model("Job", JobSchema);
+* User registration and login
+* Student and employer roles
+* Secure password hashing using bcrypt
+* JWT-based authentication
+* Employer job posting
+* Job listing and retrieval
+* MongoDB database integration
+* REST API based backend
+* CORS support
+* Environment-based configuration
 
-// User Signup
-app.post("/signup", async (req, res) => {
-  const { name, email, password, role, skills, company } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const user = new User({ name, email, password: hashedPassword, role, skills, company });
-  await user.save();
-  res.json({ message: "User registered successfully!" });
-});
+## Tech Stack
 
-// User Login
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
+### Backend
 
-  if (!user || !(await bcrypt.compare(password, user.password))) {
-    return res.status(400).json({ message: "Invalid credentials" });
-  }
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT
+* bcrypt.js
+* CORS
+* dotenv
 
-  const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET);
-  res.json({ token, user });
-});
+### Frontend
 
-// Post a Job
-app.post("/post-job", async (req, res) => {
-  const job = new Job(req.body);
-  await job.save();
-  res.json({ message: "Job posted successfully!" });
-});
+* JavaScript
+* HTML/CSS
+* JavaScript-based frontend components
 
-// Get All Jobs
-app.get("/jobs", async (req, res) => {
-  const jobs = await Job.find();
-  res.json(jobs);
-});
+## Project Architecture
 
-// Start Server
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```text
+Job Portal
+│
+├── Frontend
+│   ├── Login
+│   ├── Job Listings
+│   └── User Interface
+│
+└── Backend
+    ├── Authentication
+    ├── User Management
+    ├── Job Management
+    └── MongoDB Database
+```
+
+## API Endpoints
+
+| Method | Endpoint    | Description                   |
+| ------ | ----------- | ----------------------------- |
+| POST   | `/signup`   | Register a new user           |
+| POST   | `/login`    | Authenticate an existing user |
+| POST   | `/post-job` | Create a new job listing      |
+| GET    | `/jobs`     | Retrieve available jobs       |
+
+## User Roles
+
+### Student / Job Seeker
+
+* Create an account
+* Log in securely
+* Maintain skills information
+* Browse available job listings
+
+### Employer
+
+* Create an employer account
+* Log in securely
+* Post job opportunities
+* Manage job-related data
+
+## Database Models
+
+### User
+
+The User model contains information such as:
+
+* Name
+* Email
+* Password
+* Role
+* Skills
+* Company
+
+### Job
+
+The Job model contains:
+
+* Job title
+* Company
+* Location
+* Description
+* Required skills
+* Posting user reference
+
+## Authentication
+
+Passwords are hashed using **bcrypt.js** before being stored in the database.
+
+JWT tokens are generated after successful authentication and contain the authenticated user's ID and role.
+
+## Environment Variables
+
+Create a `.env` file in the backend directory:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=10000
+```
+
+Never commit your actual `.env` file to GitHub.
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/harsh10099ht5/job-portal.git
+cd job-portal
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file and add your MongoDB connection string and JWT secret.
+
+### 4. Start the server
+
+```bash
+node server.js
+```
+
+The server will run on the configured port.
+
+## Future Improvements
+
+* Advanced job search and filtering
+* Application management
+* Role-based route protection
+* Employer dashboard
+* Student profile dashboard
+* Resume upload
+* Email notifications
+* Improved API validation
+* Production deployment
+* Automated testing
+
+## Project Status
+
+**Status:** In Development
+
+This project is being developed as a full-stack web application to demonstrate practical implementation of authentication, REST APIs, database integration, and job management.
+
+## Author
+
+**Harshit Tripathi**
+
+Computer Science & Engineering — AI & ML
+
+GitHub: [@harsh10099ht5](https://github.com/harsh10099ht5)
