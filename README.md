@@ -1,77 +1,43 @@
-# Job In India
+<div align="center">
 
-> A modern job portal designed to connect job seekers with employers through a simple, secure, and user-friendly platform.
+# 💼 Job In India
 
-![Project Status](https://img.shields.io/badge/Status-In%20Development-blue)
-![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?logo=mysql&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
+### Find Opportunities. Build Careers. Hire Talent.
 
----
+A modern full-stack job portal designed to connect **job seekers, recruiters, and opportunities** through a clean, secure, and scalable platform.
 
-## Overview
+<br>
 
-**Job In India** is a full-stack web-based job portal developed to simplify the recruitment process for both job seekers and administrators.
+[![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-The platform provides a centralized environment where users can:
+<br>
 
-- Discover available job opportunities
-- Create and manage their profiles
-- Apply for jobs
-- Upload resumes
-- Track application status
-- Manage job postings
-- Review and update candidate applications
+**Status:** `Active Development`
 
-The system is designed with a clean, professional, and responsive interface suitable for real-world deployment.
+</div>
 
 ---
 
-## Key Features
+## ✦ About
 
-### For Job Seekers
+**Job In India** is a web-based recruitment platform built to simplify the process of discovering jobs, submitting applications, managing candidates, and tracking recruitment progress.
 
-- User registration and authentication
-- Secure password hashing
-- Professional user profile
-- Browse available jobs
-- Search and explore job opportunities
-- Apply for jobs
-- Resume upload
-- View submitted applications
-- Track application status
-- Logout and session management
+The platform focuses on a **simple user experience, secure authentication, structured data management, and scalable architecture**.
 
-### For Administrators
-
-- Secure administrator authentication
-- Create and publish job vacancies
-- Manage posted jobs
-- View candidate applications
-- Review candidate information
-- Access uploaded resumes
-- Update application status
-- Monitor recruitment activity
-
-### Application Workflow
+### The platform connects
 
 ```text
-Job Seeker
-    ↓
-Register / Login
-    ↓
-Complete Profile
-    ↓
-Browse Jobs
-    ↓
-Select Job
-    ↓
-Upload Resume
-    ↓
-Submit Application
-    ↓
-Application Status
-    ↓
-Applied → Shortlisted → Selected / Rejected
+                 JOB IN INDIA
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+     JOB SEEKERS              ADMIN
+          │                       │
+     Find Jobs                Post Jobs
+     Apply                    Manage Jobs
+     Upload Resume            Review Candidates
+     Track Status             Update Status
