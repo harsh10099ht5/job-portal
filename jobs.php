@@ -149,501 +149,46 @@ $result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Find Jobs - Job In India</title>
-
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-
-        body {
-            background: #f4f7fb;
-            color: #222;
-        }
-
-
-        /* ================= NAVBAR ================= */
-
-        .navbar {
-            background: #0d6efd;
-            color: white;
-
-            padding: 17px 6%;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-
-        .brand {
-            font-size: 23px;
-            font-weight: 700;
-        }
-
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-
-        .nav-btn {
-            background: white;
-            color: #0d6efd !important;
-
-            padding: 9px 16px;
-
-            border-radius: 6px;
-        }
-
-
-        /* ================= CONTAINER ================= */
-
-        .container {
-            max-width: 1150px;
-
-            margin: 40px auto;
-
-            padding: 0 20px;
-        }
-
-
-        /* ================= HEADER ================= */
-
-        .page-header {
-            margin-bottom: 25px;
-        }
-
-
-        .page-header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-
-
-        .page-header p {
-            color: #6c757d;
-            font-size: 15px;
-        }
-
-
-        /* ================= SEARCH ================= */
-
-        .search-box {
-            background: white;
-
-            padding: 22px;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.07);
-
-            margin-bottom: 30px;
-        }
-
-
-        .filters {
-            display: grid;
-
-            grid-template-columns:
-                2fr 1fr 1fr auto auto;
-
-            gap: 10px;
-        }
-
-
-        .filters input {
-            width: 100%;
-
-            height: 45px;
-
-            padding: 0 13px;
-
-            border: 1px solid #d5dbe1;
-
-            border-radius: 7px;
-
-            font-size: 14px;
-
-            outline: none;
-        }
-
-
-        .filters input:focus {
-            border-color: #0d6efd;
-
-            box-shadow:
-                0 0 0 3px rgba(13,110,253,0.08);
-        }
-
-
-        .search-btn,
-        .clear-btn {
-            height: 45px;
-
-            padding: 0 18px;
-
-            border-radius: 7px;
-
-            font-weight: 600;
-
-            text-decoration: none;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-        }
-
-
-        .search-btn {
-            border: none;
-
-            background: #0d6efd;
-
-            color: white;
-
-            cursor: pointer;
-        }
-
-
-        .search-btn:hover {
-            background: #0b5ed7;
-        }
-
-
-        .clear-btn {
-            background: #6c757d;
-
-            color: white;
-        }
-
-
-        .clear-btn:hover {
-            background: #5c636a;
-        }
-
-
-        /* ================= RESULTS ================= */
-
-        .results-header {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 18px;
-        }
-
-
-        .results-header h2 {
-            font-size: 21px;
-        }
-
-
-        .result-count {
-            color: #6c757d;
-
-            font-size: 14px;
-        }
-
-
-        /* ================= JOB CARD ================= */
-
-        .job-card {
-            background: white;
-
-            padding: 25px;
-
-            margin-bottom: 18px;
-
-            border-radius: 12px;
-
-            border: 1px solid #edf0f3;
-
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.06);
-
-            transition: 0.2s;
-        }
-
-
-        .job-card:hover {
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 7px 22px rgba(0,0,0,0.09);
-        }
-
-
-        .job-top {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: flex-start;
-
-            gap: 15px;
-
-            margin-bottom: 15px;
-        }
-
-
-        .job-title {
-            color: #0d6efd;
-
-            font-size: 21px;
-
-            margin-bottom: 7px;
-        }
-
-
-        .company {
-            color: #555;
-
-            font-size: 14px;
-        }
-
-
-        .job-badge {
-            background: #e7f1ff;
-
-            color: #0d6efd;
-
-            padding: 6px 10px;
-
-            border-radius: 20px;
-
-            font-size: 12px;
-
-            font-weight: 600;
-
-            white-space: nowrap;
-        }
-
-
-        /* ================= JOB INFO ================= */
-
-        .job-details {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin: 15px 0;
-        }
-
-
-        .detail {
-            background: #f5f7fa;
-
-            padding: 8px 12px;
-
-            border-radius: 6px;
-
-            color: #555;
-
-            font-size: 13px;
-        }
-
-
-        .description {
-            color: #666;
-
-            line-height: 1.6;
-
-            font-size: 14px;
-
-            margin-top: 12px;
-
-            max-height: 70px;
-
-            overflow: hidden;
-        }
-
-
-        /* ================= FOOTER ROW ================= */
-
-        .job-footer {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-top: 20px;
-
-            padding-top: 17px;
-
-            border-top: 1px solid #eee;
-        }
-
-
-        .posted {
-            color: #888;
-
-            font-size: 12px;
-        }
-
-
-        .apply-btn {
-            display: inline-block;
-
-            background: #0d6efd;
-
-            color: white;
-
-            text-decoration: none;
-
-            padding: 10px 20px;
-
-            border-radius: 7px;
-
-            font-size: 14px;
-
-            font-weight: 600;
-        }
-
-
-        .apply-btn:hover {
-            background: #0b5ed7;
-        }
-
-
-        /* ================= NO JOBS ================= */
-
-        .no-jobs {
-            background: white;
-
-            padding: 50px 25px;
-
-            text-align: center;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 4px 15px rgba(0,0,0,0.06);
-        }
-
-
-        .no-jobs h3 {
-            margin-bottom: 8px;
-        }
-
-
-        .no-jobs p {
-            color: #777;
-
-            font-size: 14px;
-        }
-
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 850px) {
-
-            .filters {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .filters input:first-child {
-                grid-column: 1 / -1;
-            }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                gap: 8px;
-            }
-
-            .nav-links a:not(.nav-btn) {
-                display: none;
-            }
-
-            .container {
-                margin: 25px auto;
-            }
-
-            .filters {
-                grid-template-columns: 1fr;
-            }
-
-            .filters input:first-child {
-                grid-column: auto;
-            }
-
-            .job-top {
-                flex-direction: column;
-            }
-
-            .job-footer {
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 15px;
-            }
-
-            .apply-btn {
-                width: 100%;
-
-                text-align: center;
-            }
-
-            .results-header {
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 7px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Jobs | Job In India</title>
+<meta name="description" content="Discover career opportunities on Job In India.">
+<style>
+:root{--p:#2563eb;--pd:#1d4ed8;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--bg:#f8fafc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{text-decoration:none}
+.navbar{position:sticky;top:0;z-index:20;height:72px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6%}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:800;font-size:21px;letter-spacing:-.4px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--p);color:#fff;display:grid;place-items:center;font-weight:800;box-shadow:0 6px 18px rgba(37,99,235,.22)}
+.nav-links{display:flex;align-items:center;gap:10px}.nav-links a{color:#475569;font-size:14px;font-weight:650;padding:9px 12px;border-radius:9px}.nav-links a:hover{background:#f1f5f9;color:var(--text)}
+.nav-btn{border:1px solid var(--border);background:#fff!important}
+.container{max-width:1180px;margin:auto;padding:48px 22px 70px}
+.hero{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:26px}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;color:var(--p);background:#eff6ff;border:1px solid #dbeafe;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:750;margin-bottom:14px}.eyebrow span{width:6px;height:6px;border-radius:50%;background:#22c55e}
+h1{font-size:clamp(31px,4vw,46px);line-height:1.08;letter-spacing:-1.5px;margin-bottom:10px}.hero p{color:var(--muted);font-size:16px;max-width:610px}.hero-note{color:var(--muted);font-size:13px;text-align:right}
+.search-box{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(15,23,42,.05);margin-bottom:30px}
+.filters{display:grid;grid-template-columns:minmax(260px,2fr) 1fr 1fr auto auto;gap:10px}.filters input{width:100%;height:48px;padding:0 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:var(--text);font-size:14px;outline:none;transition:.18s}.filters input:focus{border-color:#93c5fd;box-shadow:0 0 0 4px #eff6ff}
+.search-btn,.clear-btn{height:48px;padding:0 19px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;white-space:nowrap}
+.search-btn{border:0;background:var(--p);color:#fff;cursor:pointer}.search-btn:hover{background:var(--pd)}
+.clear-btn{background:#fff;border:1px solid var(--border);color:#475569}.clear-btn:hover{background:#f8fafc}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.results-header h2{font-size:20px}.result-count{color:var(--muted);font-size:13px;background:#fff;border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+.job-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:23px 24px;margin-bottom:14px;transition:.2s;box-shadow:0 4px 18px rgba(15,23,42,.035)}.job-card:hover{border-color:#bfdbfe;box-shadow:0 12px 30px rgba(15,23,42,.08);transform:translateY(-1px)}
+.job-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}.job-title{font-size:20px;line-height:1.3;letter-spacing:-.35px;margin-bottom:5px}.company{color:#475569;font-size:14px;font-weight:600}.job-badge{background:#ecfdf5;color:#047857;padding:6px 10px;border-radius:999px;font-size:11px;font-weight:750;white-space:nowrap}
+.job-details{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0 13px}.detail{background:#f8fafc;border:1px solid #eef2f7;color:#475569;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.description{color:var(--muted);font-size:14px;line-height:1.65;max-width:900px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.job-footer{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:19px;padding-top:17px;border-top:1px solid #f1f5f9}.posted{color:#94a3b8;font-size:12px}
+.apply-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--p);color:#fff;padding:10px 17px;border-radius:9px;font-size:13px;font-weight:750;transition:.18s}.apply-btn:hover{background:var(--pd);transform:translateY(-1px)}
+.no-jobs{background:#fff;border:1px solid var(--border);border-radius:16px;padding:65px 25px;text-align:center}.empty-icon{width:50px;height:50px;border-radius:14px;background:#eff6ff;color:var(--p);display:grid;place-items:center;margin:0 auto 15px;font-size:22px}.no-jobs h3{font-size:18px;margin-bottom:6px}.no-jobs p{color:var(--muted);font-size:14px}
+.back-link{display:inline-block;margin-top:18px;color:var(--p);font-size:13px;font-weight:700}
+footer{border-top:1px solid var(--border);background:#fff;padding:22px;text-align:center;color:#94a3b8;font-size:12px}
+@media(max-width:900px){.filters{grid-template-columns:1fr 1fr}.filters input:first-child{grid-column:1/-1}}
+@media(max-width:640px){.navbar{height:auto;min-height:68px;padding:13px 18px}.nav-links a:not(.nav-btn){display:none}.container{padding:32px 16px 50px}.hero{display:block}.hero-note{text-align:left;margin-top:12px}.filters{grid-template-columns:1fr}.filters input:first-child{grid-column:auto}.search-btn,.clear-btn{width:100%}.job-top,.job-footer{flex-direction:column;align-items:flex-start}.apply-btn{width:100%}}
+</style>
 </head>
-
-
+<body>
 <body>
 
 
@@ -651,9 +196,7 @@ $result = $stmt->get_result();
 
 <nav class="navbar">
 
-    <div class="brand">
-        Job In India
-    </div>
+    <a href="index.php" class="brand"><span class="brand-mark">J</span> Job In India</a>
 
 
     <div class="nav-links">
@@ -687,10 +230,8 @@ $result = $stmt->get_result();
             Find Your Next Job
         </h1>
 
-        <p>
-            Discover jobs and career opportunities
-            that match your skills.
-        </p>
+        <p>Discover jobs and career opportunities that match your skills.</p>
+        <a href="index.php" class="back-link">← Back to Website</a>
 
     </div>
 
@@ -882,7 +423,7 @@ $result = $stmt->get_result();
                     -->
 
                     <a
-                        href="apply.php?job_id=<?php echo (int)$job["id"]; ?>"
+                        href="upload.php?job_id=<?php echo (int)$job["id"]; ?>"
                         class="apply-btn"
                     >
                         Apply Now
@@ -902,7 +443,7 @@ $result = $stmt->get_result();
 
 
         <div class="no-jobs">
-
+            <div class="empty-icon">⌕</div>
             <h3>
                 No Jobs Found
             </h3>
@@ -921,6 +462,7 @@ $result = $stmt->get_result();
 </div>
 
 
+<footer>© <?php echo date("Y"); ?> Job In India · Connecting Talent With Opportunity</footer>
 </body>
 
 </html>
